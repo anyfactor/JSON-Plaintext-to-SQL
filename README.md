@@ -37,7 +37,7 @@ The desired output operation is -
 For this operation I will be using the following tools-
 
 1. Scripting language: Python
-1. Python Modules: ```JSON```
+1. Python Modules: ```JSON```, `os`
 1. DB: SQLite3
 1. Version Control: Git, Github
 1. Additional tools: Terminal applications (```head```, ```split```)
@@ -62,4 +62,20 @@ The argument for the `split` application
 ![](2021-07-10-11-43-37.png)
 
 This operation resulted in 965 files that is divided in 5000 lines. Each file has different file size as I splitted the file by lines and not by size.
+
+### Traversing and Parsing data
+
+Now we have to parse the data from each of the files. The structure of the file is same across file to file.
+
+We can use the Python's `json` module's `loads` method to parse the data which converts string representation of JSON object to python dictionary. To do that we will first split the file to dictionary with the delimite of `, ` then we will append each parsed JSON object to a file.
+
+To traverse across the filesystem I am going to use the `os.listdir` method.
+
+For each file we are going to parse to dictionary, create a list of dictionary and input the list of dictionary to an SQLite3 db.
+
+### SQLite3 DB
+
+Because I am dumping converting an incredible amount of code in my first attempt I tried to do `execute` > `commit` for each line of data. Which was a terrible terrible idea. Now, I am using `executemany` and doing a commit.
+
+
 
