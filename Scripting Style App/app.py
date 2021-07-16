@@ -21,7 +21,7 @@ def db_initializer_fn():
                 " retrieved_on int, permalink text, over_18 int,"
                 " num_comments int, post_id text,"
                 " gilded int, full_link text,"
-                " created_utc int, author text)")
+                " created_utc int, author text, url text)")
   cursor.execute(create_table)
   connection.commit()
   return cursor, connection
@@ -81,7 +81,7 @@ def data_for_db_fn(parsed_data):
   keys_for_db = ['title', 'score', 'retrieved_on',
                  'permalink', 'over_18', 'num_comments',
                  'id', 'gilded', 'full_link', 'created_utc',
-                 'author']
+                 'author', 'url']
   data_for_db = []
   for data in parsed_data:
     data_for_db.append(tuple([data[key] for key in keys_for_db]))
@@ -98,7 +98,7 @@ def db_operation_fn(data_for_db, cursor, connection):
   '''
   cursor.executemany(
     ("INSERT INTO posts(title, score, retrieved_on, permalink,"
-    "over_18, num_comments, post_id, gilded, full_link, created_utc, author) "
+    "over_18, num_comments, post_id, gilded, full_link, created_utc, author, url) "
     "VALUES (?,?,?,?,?,?,?,?,?,?,?)"), data_for_db)
   connection.commit()
   return True
