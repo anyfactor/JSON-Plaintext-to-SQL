@@ -80,9 +80,9 @@ Because I am dumping converting an incredible amount of code in my first attempt
 
 ## End Result
 
-I was able to convert the 16 gb JSON file to a manageable 1.5 gb SQLite3 db. Wit 4822371 rows.
+I was able to convert the 16 gb JSON file to a manageable 1.5 gb SQLite3 db. With 4822371 rows.
 
---
+---
 
 **Disclaimer**
 
