@@ -15,7 +15,7 @@ def db_initializer_fn():
   returns: cursor, connection
   next fn: db_operation_fn
   '''
-  connection = sqlite3.connect('main test.db')
+  connection = sqlite3.connect('main test1.db')
   cursor = connection.cursor()
   create_table = ("CREATE TABLE IF NOT EXISTS posts(id INTEGER PRIMARY KEY, title text, score int,"
                 " retrieved_on int, permalink text, over_18 int,"
@@ -99,7 +99,7 @@ def db_operation_fn(data_for_db, cursor, connection):
   cursor.executemany(
     ("INSERT INTO posts(title, score, retrieved_on, permalink,"
     "over_18, num_comments, post_id, gilded, full_link, created_utc, author, url) "
-    "VALUES (?,?,?,?,?,?,?,?,?,?,?)"), data_for_db)
+    "VALUES (?,?,?,?,?,?,?,?,?,?,?, ?)"), data_for_db)
   connection.commit()
   return True
 
