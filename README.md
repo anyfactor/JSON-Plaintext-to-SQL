@@ -78,4 +78,14 @@ For each file we are going to parse to dictionary, create a list of dictionary a
 Because I am dumping converting an incredible amount of code in my first attempt I tried to do `execute` > `commit` for each line of data. Which was a terrible terrible idea. Now, I am using `executemany` and doing a commit.
 
 
+## End Result
 
+I was able to convert the 16 gb JSON file to a manageable 1.5 gb SQLite3 db. Wit 4822371 rows.
+
+--
+
+**Disclaimer**
+
+I had to use some `try and except` blocks because the JSON file had some irregularities and I logged the erroneous and traceback info using `traceback.format_exec()` to a log file. The error data was negligible. 
+
+The original working script was written in scripting style and later converted to OOP style.
